@@ -1,23 +1,13 @@
 # 📄 Automated PDF Report Generation
 
-## 📌 Task Description
-This script reads sales data from a CSV file, analyzes it using pandas, and generates a formatted PDF report using FPDF.
+*COMPANY*: CODTECH IT SOLUTIONS
 
-## 🔧 Tools Used
-- Python
-- Pandas
-- FPDF
+*NAME*: VAISHNAVI MUNIGANTI
 
-## 📊 Output
-- Total and average sales
-- Sales by department
-- PDF file: `output_report.pdf`
+*INTERN ID*: CT04DK603
 
-## 📁 Files
-- `sample_data.csv`: Input data
-- `report_generator.py`: Analysis + PDF generation
-- `output_report.pdf`: Final report
+*DOMAIN*: PYTHON PROGRAMMING
 
-## 🧠 Author
-CodTech Internship - Task 2  
-By [Vaishnavi Muniganti]
+*DURATION*: 4 WEEKS
+
+*MENTOR*: NEELA SANTOSH
