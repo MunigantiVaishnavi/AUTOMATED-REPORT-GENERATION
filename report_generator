@@ -1,0 +1,63 @@
+import pandas as pd
+from fpdf import FPDF
+import os
+
+# Load data
+df = pd.read_csv('sample_data.csv')
+
+# Basic analysis
+total_sales = df['Sales'].sum()
+average_sales = df['Sales'].mean()
+department_summary = df.groupby('Department')['Sales'].sum()
+
+# PDF setup
+pdf = FPDF()
+pdf.add_page()
+
+# Title
+pdf.set_font("Arial", 'B', 16)
+pdf.set_text_color(30, 30, 30)
+pdf.cell(200, 10, txt="Company Sales Report", ln=True, align='C')
+pdf.ln(10)
+
+# Section: Summary
+pdf.set_font("Arial", 'B', 14)
+pdf.cell(200, 10, txt="Summary", ln=True)
+pdf.set_font("Arial", '', 12)
+pdf.cell(200, 8, txt=f"Total Sales: ${total_sales}", ln=True)
+pdf.cell(200, 8, txt=f"Average Sales: ${average_sales:.2f}", ln=True)
+pdf.ln(10)
+
+# Section: Department Summary
+pdf.set_font("Arial", 'B', 14)
+pdf.cell(200, 10, txt="Department-wise Sales", ln=True)
+pdf.set_font("Arial", 'B', 12)
+pdf.cell(100, 8, txt="Department", border=1)
+pdf.cell(100, 8, txt="Total Sales", border=1, ln=True)
+pdf.set_font("Arial", '', 12)
+
+for dept, sales in department_summary.items():
+    pdf.cell(100, 8, txt=dept, border=1)
+    pdf.cell(100, 8, txt=f"${sales}", border=1, ln=True)
+
+pdf.ln(10)
+
+# Section: Full Table
+pdf.set_font("Arial", 'B', 14)
+pdf.cell(200, 10, txt="Individual Sales Records", ln=True)
+pdf.set_font("Arial", 'B', 12)
+pdf.cell(60, 8, "Name", border=1)
+pdf.cell(70, 8, "Department", border=1)
+pdf.cell(60, 8, "Sales", border=1, ln=True)
+pdf.set_font("Arial", '', 12)
+
+for index, row in df.iterrows():
+    pdf.cell(60, 8, row["Name"], border=1)
+    pdf.cell(70, 8, row["Department"], border=1)
+    pdf.cell(60, 8, f"${row['Sales']}", border=1, ln=True)
+
+# Save PDF
+pdf.output("output_report.pdf")
+os.startfile("output_report.pdf")  # Automatically opens the PDF (Windows only)
+
+print("✅ Stylish PDF report generated: output_report.pdf")
