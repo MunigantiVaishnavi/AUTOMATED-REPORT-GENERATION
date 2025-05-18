@@ -54,3 +54,8 @@ This approach eliminates the need for manual report writing and ensures accuracy
 - `output_report.pdf` – Generated PDF report
 - `README.md` – This documentation
 
+##OUTPUT
+
+[output_report.pdf](https://github.com/user-attachments/files/20272253/output_report.pdf)
+
+![Image](https://github.com/user-attachments/assets/8d0d324c-5f5e-4c1c-958b-c7df518da66b)
